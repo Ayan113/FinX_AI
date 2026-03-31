@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-bg: linear-gradient(135deg, #eef6ff 0%, #f7fafc 40%, #eefcf8 100%);
+}
+
+.dark {
+  --app-bg: linear-gradient(135deg, #07101d 0%, #0b1d31 45%, #061821 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--app-bg);
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 9999px;
+}
+
+textarea,
+input,
+button {
+  font: inherit;
+}
