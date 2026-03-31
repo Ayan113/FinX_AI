@@ -4,6 +4,20 @@ FinInsight AI is a full-stack financial market intelligence workspace built with
 
 This application is for educational purposes only and does not provide financial advice.
 
+## Screenshots
+
+### Dashboard
+
+![FinInsight AI Dashboard](public/screenshots/dashboard.png)
+
+### AI Assistant
+
+![FinInsight AI Chat Assistant](public/screenshots/chat.png)
+
+### Portfolio Analyzer
+
+![FinInsight AI Portfolio Analyzer](public/screenshots/portfolio.png)
+
 ## Features
 
 - Dashboard with overview cards, quick insights, and fintech-style glassmorphism UI
@@ -195,3 +209,5 @@ npm run build
 - Add streaming responses through Server-Sent Events
 - Add authentication and per-user document namespaces
 - Swap the local vector store for PostgreSQL + pgvector or a hosted vector DB
+
+Developed and maintained by Ayan113.
