@@ -1,5 +1,7 @@
 # FinInsight AI
 
+Live Preview : https://fin-x-ai-six.vercel.app/
+
 FinInsight AI is a full-stack financial market intelligence workspace built with Next.js App Router, TailwindCSS, Framer Motion, Recharts, Zustand, and a modular AI service layer. It combines a financial chatbot, document-grounded RAG, portfolio analysis, market theme exploration, visual analytics, and voice interaction in one production-oriented web application.
 
 This application is for educational purposes only and does not provide financial advice.
