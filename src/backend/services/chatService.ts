@@ -7,7 +7,15 @@ type ChatInput = {
 };
 
 export async function getChatResponse({ message, useRag = true }: ChatInput) {
-  const ragResult = useRag ? await answerWithRag(message) : null;
+  let ragResult = null;
+
+  if (useRag) {
+    try {
+      ragResult = await answerWithRag(message);
+    } catch {
+      ragResult = null;
+    }
+  }
 
   const fallback = [
     "Financial intelligence summary:",

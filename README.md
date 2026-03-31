@@ -35,7 +35,7 @@ This application is for educational purposes only and does not provide financial
 - Frontend: Next.js App Router, React, TailwindCSS, Framer Motion, Recharts, Zustand
 - Backend: Next.js route handlers with modular controller and service layers
 - AI: Provider-agnostic LLM client supporting Groq/OpenAI-style chat completion APIs
-- RAG: Local chunking, lightweight embeddings, JSON vector persistence, cosine similarity retrieval
+- RAG: Local chunking, lightweight embeddings, cosine similarity retrieval, and persistent JSON vector storage via Vercel Blob with a local fallback
 - Voice: Web Speech API on the client, ElevenLabs text-to-speech on the backend
 
 ## Project Structure
@@ -101,6 +101,7 @@ LLM_MODEL=llama-3.3-70b-versatile
 LLM_BASE_URL=
 ELEVENLABS_API_KEY=
 ELEVENLABS_VOICE_ID=
+BLOB_READ_WRITE_TOKEN=
 PORT=3000
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 ```
@@ -109,6 +110,7 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
 
 - If `LLM_API_KEY` is missing, the app falls back to deterministic local responses so the UI and APIs still work during setup.
 - If `ELEVENLABS_API_KEY` is missing, voice output falls back to browser speech synthesis.
+- If `BLOB_READ_WRITE_TOKEN` is missing, RAG storage falls back to local temporary storage instead of persistent Vercel Blob storage.
 
 ## Getting Started
 
@@ -145,7 +147,7 @@ The RAG flow is:
 2. Extract text with `pdf-parse` for PDFs or UTF-8 decoding for text
 3. Chunk text into overlapping segments
 4. Generate lightweight local embeddings
-5. Persist chunks and embeddings to `data/vector-store.json`
+5. Persist chunks and embeddings to a private Vercel Blob JSON file when `BLOB_READ_WRITE_TOKEN` is configured
 6. Retrieve top-k chunks by cosine similarity
 7. Build grounded context for the LLM
 8. Return answer plus citations
@@ -181,7 +183,7 @@ Portfolio analysis combines rule-based heuristics and LLM summarization:
 
 - No secrets are hardcoded
 - AI and voice providers are environment-driven
-- Vector persistence is local JSON for simplicity and portability
+- Vector persistence uses private Vercel Blob storage in production and a local fallback for development/setup
 - Route handlers use a modular controller/service layout for maintainability
 - The UI uses reusable components rather than page-specific one-offs
 

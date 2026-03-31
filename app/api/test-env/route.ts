@@ -7,6 +7,7 @@ export async function GET() {
   return ok({
     llmApiKeyPresent: Boolean(env.llmApiKey),
     elevenLabsApiKeyPresent: Boolean(env.elevenLabsApiKey),
+    blobReadWriteTokenPresent: Boolean(process.env.BLOB_READ_WRITE_TOKEN?.trim()),
     nextPublicApiBaseUrlPresent: Boolean(env.nextPublicApiBaseUrl)
   });
 }
